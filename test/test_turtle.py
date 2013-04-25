@@ -19,6 +19,7 @@ def setup_module(module):
 
 def test_entity():
     tiddler = Tiddler('Hello World', 'alpha')
+    tiddler.fields["rdf:type"] = "skos:Concept"
 
     serializer = Serializer('tiddlywebplugins.rdf', ENVIRON)
     serializer.object = tiddler
@@ -28,6 +29,6 @@ def test_entity():
 @prefix : <http://example.org/wiki/>.
 @prefix tweb: <http://tiddlyweb.com/>.
 
-:bags/alpha/Hello%20World a tweb:tiddler;
+:bags/alpha/Hello%20World a tweb:tiddler, skos:Concept;
     tweb:bag :bags/alpha
     '''.strip()
