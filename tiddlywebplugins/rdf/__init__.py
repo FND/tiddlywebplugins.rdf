@@ -17,7 +17,7 @@ class Serialization(SerializationInterface):
 
     title, bag = [encode_name(name) for name in (tiddler.title, tiddler.bag)]
     return """
-@prefix host: <%s>.
+@prefix : <%s>.
 @prefix tweb: <http://tiddlyweb.com/>.
 
 :bags/%s/%s a tweb:tiddler;

@@ -25,7 +25,7 @@ def test_entity():
     representation = serializer.to_string()
 
     assert representation == '''
-@prefix host: <http://example.org/wiki/>.
+@prefix : <http://example.org/wiki/>.
 @prefix tweb: <http://tiddlyweb.com/>.
 
 :bags/alpha/Hello%20World a tweb:tiddler;
