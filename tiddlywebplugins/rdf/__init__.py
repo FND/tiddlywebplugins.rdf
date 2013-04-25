@@ -1,5 +1,5 @@
 from tiddlyweb.serializations import SerializationInterface
-from tiddlyweb.web.util import encode_name, server_host_url
+from tiddlyweb.web.util import encode_name, server_base_url
 
 
 def init(config):
@@ -13,8 +13,7 @@ def init(config):
 class Serialization(SerializationInterface):
 
   def tiddler_as(self, tiddler):
-    host = '%s%s/' % (server_host_url(self.environ),
-        self.environ['tiddlyweb.config']['server_prefix']) # TODO: normalize -- XXX: reinventing the wheel?
+    host = '%s/' % server_base_url(self.environ) # TODO: normalize?
 
     title, bag = [encode_name(name) for name in (tiddler.title, tiddler.bag)]
     return """
