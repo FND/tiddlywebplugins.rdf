@@ -20,6 +20,7 @@ def setup_module(module):
 def test_entity():
     tiddler = Tiddler('Hello World', 'alpha')
     tiddler.fields["rdf:type"] = "skos:Concept"
+    tiddler.fields["lipsum"] = "..."
 
     serializer = Serializer('tiddlywebplugins.rdf', ENVIRON)
     serializer.object = tiddler
