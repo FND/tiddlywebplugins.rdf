@@ -47,14 +47,14 @@ def to_turtle(namespaces, rdf_data):
             in namespaces.items()]
 
     triples = []
-    for rdf_sbj, subject_data in rdf_data.items():
-        fields = ['%s %s' % (resolve_predicate(rdf_prd), ', '.join(rdf_objects))
-                for rdf_prd, rdf_objects in subject_data.items()]
-        fields = '%s %s' % (rdf_sbj, ';\n    '.join(fields))
+    for sbj, subject_data in rdf_data.items():
+        fields = ['%s %s' % (_resolve_predicate(prd), ', '.join(objects))
+                for prd, objects in subject_data.items()]
+        fields = '%s %s' % (sbj, ';\n    '.join(fields))
         triples.append(fields)
 
     return '\n'.join(headers + [''] + triples)
 
 
-def resolve_predicate(prd):
+def _resolve_predicate(prd):
     return 'a' if prd == 'rdf:type' else prd
