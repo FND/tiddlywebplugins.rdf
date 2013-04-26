@@ -33,8 +33,8 @@ class Serialization(SerializationInterface):
         try:
             prefix, suffix = field.split(':')
             # TODO: use collections.defaultdict
-            rdf_data[subject] = rdf_data[subject] or {}
-            rdf_data[subject][field] = rdf_data[subject][field] or []
+            rdf_data[subject] = rdf_data.get(subject) or {}
+            rdf_data[subject][field] = rdf_data[subject].get(field) or []
             rdf_data[subject][field].append(value)
         except ValueError: # not RDF-related
             pass
